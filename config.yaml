@@ -18,26 +18,22 @@ exchanges:
         trades: [BTC-USD, ETH-USD, ETH-BTC]
         ticker: [BTC-USD, ETH-USD, ETH-BTC]
 
-storage: [influx, parquet]
+storage: [parquet]
 storage_retries: 10
 storage_retry_wait: 30
 
-influx:
-    host: 'http://127.0.0.1:8086'
-    db: cryptostore
-    create: true
-    username: cryptostore
-    password: cryptostore
-    token: 74GZNXC2xum7r95C_gM_nz_XaS0_iaMNYkDeFrPX7cHi4N5ciLnGzBelYJX1v8XL77qyi-3LV0-8OEXe0Kulwg==
-
 parquet:
-    del_file: false
+    del_file: true
     append_counter: 60
     compression:
         codec: 'BROTLI'
         level: 6
-    path: /home/kaznak/work/cryptostore/data
+    path: /home/kaznak/work/cryptoenv/data
     prefix_date: true
+    GCS:
+        service_account: null
+        bucket: cryptofeed
+        prefix: null
 
 storage_interval: 60
 
